@@ -2,3 +2,9 @@ config.py
 # Ignore everything in the images directory, but don't ignore musk.jpeg
 images/*
 !images/musk.jpeg
+
+DB/memory/*
+!DB/memory/ingest.py
+
+__pycache__
+test.py

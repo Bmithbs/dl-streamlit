@@ -1,4 +1,4 @@
-# Our Digital Life Project Built by Streamlit
+# 🧬 Digital Life Project Built by Streamlit
 
 ## Run the project 
 

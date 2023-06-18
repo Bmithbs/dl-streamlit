@@ -1,4 +1,4 @@
-# 🧬 Digital Life Project Built by Streamlit
+# 🧬 Digital Life Project Built by Beyond-Future.ai
 
 ## Run the project 
 

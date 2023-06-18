@@ -14,3 +14,4 @@ streamlit run Home.py
 - [ ] Voice Clone, [so-vits-svc](https://github.com/svc-develop-team/so-vits-svc)
 - [ ] Speech output, text2speech
 - [ ] Speech input, Speech2text
+

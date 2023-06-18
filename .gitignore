@@ -1,2 +1,4 @@
 config.py
-images/*.jpg
+# Ignore everything in the images directory, but don't ignore musk.jpeg
+images/*
+!images/musk.jpeg

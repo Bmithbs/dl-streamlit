@@ -12,6 +12,7 @@ import argparse
 from langchain.chat_models import ChatOpenAI
 from langchain.vectorstores import Chroma
 from langchain.embeddings.openai import OpenAIEmbeddings
+
 from config import OPENAI_API_KEY, OPENAI_BASE_URL, Temperature
 
 class ChatBot():

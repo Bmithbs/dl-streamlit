@@ -19,21 +19,55 @@ st.title("Create Your Digital Life !")
 header1 = "First, you should upload your avatar"
 st.header(header1)
 left_column, right_column = st.columns(2)
-uploaded_file = right_column.file_uploader('Upload your avatar', type=['png', 'jpg', 'jpeg'])
-if not uploaded_file:
+avater_file = right_column.file_uploader('Upload your avatar', type=['png', 'jpg', 'jpeg'])
+if not avater_file:
     left_column.image("images/musk.jpeg", caption="This is an example: Elon Musk")
 else: 
-    file_content = uploaded_file.getvalue()
+    file_content = avater_file.getvalue()
     # 将字节流转化为文件对象
     file_obj = io.BytesIO(file_content)
     # 将文保存到本地
-    with open(f"images/{uploaded_file.name}", 'wb') as f:
+    with open(f"images/{avater_file.name}", 'wb') as f:
         f.write(file_content)
-    left_column.image(f"images/{uploaded_file.name}", caption="Your avatar")
+    left_column.image(f"images/{avater_file.name}", caption="Your avatar")
 
-if uploaded_file: st.success("Uploaded successfully!")
+if avater_file: st.success("Uploaded successfully!")
 
+st.divider()
 
+header2 = "Second, Upload your memory materials"
+st.header(header2)
+st.write('Upload your memory materials, such as chat history, diaries, twitters, blogs etc. Now we only support txt files.')
+
+memory_file = st.file_uploader('Upload your memory materials', type=['txt'], accept_multiple_files=True)
+
+if memory_file: 
+    st.success("Uploaded successfully!")
+
+st.divider()
+header3 = 'Third, digest your memory materials'
+st.header(header3)
+
+if st.button('Start to digist'):
+    if memory_file:
+        # digist 函数
+        st.success("Digisted successfully!")
+
+    else :
+        st.warning("Please upload your memory materials first!")
+st.divider()
+
+with st.form("my_form"):
+   st.write("Inside the form")
+   slider_val = st.slider("Form slider")
+   checkbox_val = st.checkbox("Form checkbox")
+
+   # Every form must have a submit button.
+   submitted = st.form_submit_button("Submit")
+   if submitted:
+       st.write("slider", slider_val, "checkbox", checkbox_val)
+
+st.write("Outside the form") 
 
 
 # message("My message") 

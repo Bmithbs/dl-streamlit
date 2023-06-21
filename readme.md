@@ -1,5 +1,6 @@
 # 🧬 Digital Life Project Built by Beyond-Future.ai
 
+This project is dedicated to build a platform which can allow people to create their own or others' digital life. People just need to upload their memory, their voice (to clone the voice) and avatar, after that, their digital life can be created, which they can talk with by text, speech and video. In addition, we provide an API for each digital life that created, people can interface with their digital life anywhere, anytime.
 ## Run the project 
 
 ```python 

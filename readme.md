@@ -5,7 +5,7 @@ This project is dedicated to build a platform which can allow people to create t
 
 ```python 
 pip install -r requirements.txt
-streamlit run Home.py
+streamlit run HOME.py
 ```
 
 ## Roadmap

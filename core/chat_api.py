@@ -16,16 +16,19 @@ from langchain.embeddings.openai import OpenAIEmbeddings
 from config import OPENAI_API_KEY, OPENAI_BASE_URL, Temperature
 
 class ChatBot():
-    def __init__(self):
-        self.template = """
-            你是一个数字生命，你要回答人类的问题，不要用长篇大论去回答，回答要精简，20个字以内
-            
-            下面是一些相关的记忆，你可以参考一下：
-            {memory}
-            {chat_history}
-            Human: {human_input}
-            Chatbot:
-            """
+    def __init__(self, template=None):
+        if template is None:
+            self.template = """
+                你是一个数字生命，你要回答人类的问题，不要用长篇大论去回答，回答要精简，20个字以内
+                
+                下面是一些相关的记忆，你可以参考一下：
+                {memory}
+                {chat_history}
+                Human: {human_input}
+                Chatbot:
+                """
+        else: self.template = template
+
         # create a instance of prompt template
         self.prompt=PromptTemplate(
             input_variables=["chat_history", "human_input", "memory"],
@@ -51,9 +54,10 @@ class ChatBot():
         self.persist_directory = './DB/memory'
         self.memoryDB = Chroma(embedding_function=self.embedding, persist_directory=self.persist_directory)
 
+        self.related_memory = None
     def question(self, cont:str):
-        related_memory = self.memoryDB.similarity_search(cont)
-        first_shot_memory = related_memory[0].page_content
+        self.related_memory = self.memoryDB.similarity_search(cont)
+        first_shot_memory = self.related_memory[0].page_content
 
         # self.prompt.format(memory=related_memory)
         response_text = self.llm_chain.predict(human_input=cont, memory=first_shot_memory)
